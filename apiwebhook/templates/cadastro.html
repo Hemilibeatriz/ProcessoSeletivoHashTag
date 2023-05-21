@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block body%}
+    <div class="container">
+        <h1>Faça seu Cadastro</h1>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <form method="post" action="" class="border m-3 p-3">
+                    {{ form_cadastro.csrf_token }}
+                    <legend>Cadastro</legend>
+                    <fieldset>
+                        <div class="form-group">
+                            {{ form_cadastro.username.label(class='form-control-label') }}
+                            {{ form_cadastro.username(class='form-control') }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_cadastro.email.label(class='form-control-label') }}
+                            {% if form_cadastro.email.errors %}
+                                {{ form_cadastro.email(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for erro in form_cadastro.email.errors %}
+                                    {{ erro }}
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            {{ form_cadastro.email(class='form-control') }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_cadastro.password.label(class='form-control-label') }}
+                            {% if form_cadastro.password.errors %}
+                                {{ form_cadastro.password(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for erro in form_cadastro.password.errors %}
+                                    {{ erro }}
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            {{ form_cadastro.password(class='form-control') }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_cadastro.confirm.label(class='form-control-label') }}
+                            {% if form_cadastro.confirm.errors %}
+                                {{ form_cadastro.confirm(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for erro in form_cadastro.confirm.errors %}
+                                    {{ erro }}
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            {{ form_cadastro.confirm(class='form-control') }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_cadastro.token.label(class='form-control-label') }}
+                            {% if form_cadastro.token.errors %}
+                                {{ form_cadastro.token(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for erro in form_cadastro.token.errors %}
+                                    {{ erro }}
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            {{ form_cadastro.token(class='form-control') }}
+                        </div>
+                    </fieldset>
+                    {{ form_cadastro.submit_cadastro(class='btn btn-info m-2 p-2') }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
